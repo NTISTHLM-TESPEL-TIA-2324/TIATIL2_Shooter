@@ -8,6 +8,12 @@ public class ShipController : MonoBehaviour
   [SerializeField]
   float speed = 4.1f;
 
+  [SerializeField]
+  GameObject boltPrefab;
+
+  [SerializeField]
+  GameObject gun;
+
   // Update is called once per frame
   void Update()
   {
@@ -22,11 +28,24 @@ public class ShipController : MonoBehaviour
 
     transform.Translate(movement * speed * Time.deltaTime);
 
-    if (Mathf.Abs(transform.position.x) > 5)
+    if (Mathf.Abs(transform.position.x) > 8.5f)
     {
       transform.Translate(-movementX * speed * Time.deltaTime);
     }
 
+    if (Mathf.Abs(transform.position.y) > 4.5f)
+    {
+      transform.Translate(-movementY * speed * Time.deltaTime);
+    }
+
+    Instantiate(boltPrefab, gun.transform.position, Quaternion.identity);
 
   }
 }
+/*
+- Skjuta skott
+- Fiender
+- Liv
+- Score
+- Startmeny
+*/

@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  boltPrefab: {fileID: 1287502262990996, guid: 4dd15c7fe51711c48ba135fef149bbf8, type: 3}
+  gun: {fileID: 1438924083}
 --- !u!1 &1403787316
 GameObject:
   m_ObjectHideFlags: 0
