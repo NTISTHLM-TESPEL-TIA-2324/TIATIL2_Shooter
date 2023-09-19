@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-
   [SerializeField]
   float speed = 4.1f;
 
@@ -13,6 +12,10 @@ public class ShipController : MonoBehaviour
 
   [SerializeField]
   GameObject gun;
+
+  [SerializeField]
+  float timeBetweenShots = 0.5f;
+  float timeSinceLastShot = 0;
 
   // Update is called once per frame
   void Update()
@@ -38,7 +41,16 @@ public class ShipController : MonoBehaviour
       transform.Translate(-movementY * speed * Time.deltaTime);
     }
 
-    Instantiate(boltPrefab, gun.transform.position, Quaternion.identity);
+    // SKjutande
+
+    timeSinceLastShot += Time.deltaTime;
+
+    if (Input.GetAxisRaw("Fire1") > 0 && timeSinceLastShot > timeBetweenShots)
+    {
+      timeSinceLastShot = 0;
+      Instantiate(boltPrefab, gun.transform.position, Quaternion.identity);
+    }
+
 
   }
 }
