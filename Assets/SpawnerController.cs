@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+  [SerializeField]
+  GameObject enemyPrefab;
+
+  [SerializeField]
+  float timeBetweenEnemies = 0.5f;
+  float timeSinceLastEnemy = 0;
+
+  void Update()
+  {
+    timeSinceLastEnemy += Time.deltaTime;
+
+    if (timeSinceLastEnemy > timeBetweenEnemies)
     {
-        
+      Instantiate(enemyPrefab);
+      timeSinceLastEnemy = 0;
     }
+  }
 }
