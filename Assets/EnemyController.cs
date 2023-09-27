@@ -25,4 +25,13 @@ public class EnemyController : MonoBehaviour
       Destroy(this.gameObject);
     }
   }
+
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.gameObject.tag == "bullet")
+    {
+      Destroy(this.gameObject);
+    }
+  }
+
 }
