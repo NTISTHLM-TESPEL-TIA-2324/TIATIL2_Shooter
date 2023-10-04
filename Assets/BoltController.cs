@@ -17,4 +17,12 @@ public class BoltController : MonoBehaviour
       Destroy(this.gameObject);
     }
   }
+
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.gameObject.tag == "enemy")
+    {
+      Destroy(this.gameObject);
+    }
+  }
 }

@@ -7,6 +7,9 @@ public class EnemyController : MonoBehaviour
   [SerializeField]
   float speed = 3;
 
+  [SerializeField]
+  GameObject explosionPrefab;
+
   void Start() {
     float x = Random.Range(-7f, 7f);
 
@@ -30,6 +33,7 @@ public class EnemyController : MonoBehaviour
   {
     if (other.gameObject.tag == "bullet")
     {
+      Instantiate(explosionPrefab, transform.position, Quaternion.identity);
       Destroy(this.gameObject);
     }
   }
