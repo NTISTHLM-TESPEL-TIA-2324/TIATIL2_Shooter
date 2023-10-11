@@ -1,0 +1,3 @@
+- Game Over-skärm med starta om-knapp (Startmeny?)
+- Livmätare
+-> Platformer

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShipController : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class ShipController : MonoBehaviour
   [SerializeField]
   float timeBetweenShots = 0.5f;
   float timeSinceLastShot = 0;
+
+  AudioSource speaker;
+
+  void Start()
+  {
+    speaker = GetComponent<AudioSource>();
+  }
 
   // Update is called once per frame
   void Update()
@@ -41,7 +49,7 @@ public class ShipController : MonoBehaviour
       transform.Translate(-movementY * speed * Time.deltaTime);
     }
 
-    // SKjutande
+    // Skjutande
 
     timeSinceLastShot += Time.deltaTime;
 
@@ -49,15 +57,15 @@ public class ShipController : MonoBehaviour
     {
       timeSinceLastShot = 0;
       Instantiate(boltPrefab, gun.transform.position, Quaternion.identity);
+      speaker.Play();
     }
+  }
 
-
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.gameObject.tag == "enemy")
+    {
+      SceneManager.LoadScene(1);
+    }
   }
 }
-/*
-- Skjuta skott
-- Fiender
-- Liv
-- Score
-- Startmeny
-*/
